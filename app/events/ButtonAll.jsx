@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import {setCookie} from "cookies-next";
 
 export default function ButtonAll() {
   const router = useRouter();
@@ -16,11 +17,11 @@ export default function ButtonAll() {
 
   const handleClick = () => {
     setIsLoading(true);
-    sessionStorage.setItem("department_name", "all");
+    setCookie("department_name", "all");
     if (role !== "admin") {
-      sessionStorage.setItem("evaluate", "true");
+      setCookie("evaluate", true);
     } else {
-      sessionStorage.setItem("evaluate", "false");
+      setCookie("evaluate", false);
     }
     router.push("/events/projects");
   };

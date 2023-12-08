@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 // import useSWR, { preload } from "swr";
 import DataTable from "@/app/events/projects/DataTable";
+import {getCookie} from "cookies-next";
 
 // const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -11,8 +12,10 @@ import DataTable from "@/app/events/projects/DataTable";
 // preload("/api/allProjects", fetcher);
 
 export default function ProjectList({projects, departments, user}) {
-  const departmentName = sessionStorage.getItem("department_name");
-  const checkCheck = sessionStorage.getItem("evaluate");
+
+  const departmentName = getCookie("department_name");
+  const checkCheck = getCookie("evaluate");
+  console.log(checkCheck)
   // const [user, setUser] = useState({});
   // const [departments, setDepartments] = useState([]);
   const [selectDept, setSelectDept] = useState(departmentName);

@@ -37,7 +37,7 @@ export default function LoginForm() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          sessionStorage.setItem("login", "true");
+          // sessionStorage.setItem("login", "true");
           router.push("/events");
         } else {
           setLoading(false);

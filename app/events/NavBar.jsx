@@ -29,6 +29,7 @@ export default function Navbar() {
   }, []);
 
   const handleLogout = () => {
+    if (typeof window !== 'undefined')
     sessionStorage.clear();
     router.push("/login");
   };
