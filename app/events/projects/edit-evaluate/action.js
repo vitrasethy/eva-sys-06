@@ -57,5 +57,5 @@ export async function action(fetchData, formData) {
 
 
   revalidatePath("/");
-  redirect(`/`);
+  redirect(`/events/projects`);
 }
