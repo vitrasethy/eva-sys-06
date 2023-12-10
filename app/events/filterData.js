@@ -5,7 +5,7 @@ async function getDepartments() {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + cookies().get("jwt")?.value,
+      Authorization: "Bearer " + cookies().get("token")?.value,
     },
   });
 
@@ -19,7 +19,7 @@ async function getAllProjects() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + cookies().get("jwt")?.value,
+        Authorization: "Bearer " + cookies().get("token")?.value,
       },
     }
   );
@@ -32,7 +32,7 @@ async function getUserData() {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + cookies().get("jwt")?.value,
+      Authorization: "Bearer " + cookies().get("token")?.value,
     },
   });
 
@@ -68,7 +68,7 @@ export default async function getProjectsByDepartment() {
 
     return countProjects;
   } else {
-    const subDesc = "projects"
+    const subDesc = "projects in this department"
     let countProjects = [];
     departments.forEach((department) => {
       const count = projects.filter(

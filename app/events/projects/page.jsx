@@ -8,7 +8,7 @@ async function getAllProject() {
     {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookies().get("jwt")?.value}`,
+        Authorization: `Bearer ${cookies().get("token")?.value}`,
       },
     },
   );
@@ -29,7 +29,7 @@ async function getDepartments() {
     {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookies().get("jwt")?.value}`,
+        Authorization: `Bearer ${cookies().get("token")?.value}`,
       },
     },
   );
@@ -48,7 +48,7 @@ async function getUser() {
     {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookies().get("jwt")?.value}`,
+        Authorization: `Bearer ${cookies().get("token")?.value}`,
       },
     },
   );

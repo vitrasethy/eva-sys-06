@@ -1,14 +1,14 @@
-"use client";
-
-// import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default function Layout({ children }) {
-  // const isLogin = sessionStorage.getItem("login");
-  // const router = useRouter();
+  if (cookies().has("login")) {
+    redirect("/events");
+  }
 
-    return (
-      <div>
-        <section>{children}</section>
-      </div>
-    );
+  return (
+    <div>
+      <section>{children}</section>
+    </div>
+  );
 }

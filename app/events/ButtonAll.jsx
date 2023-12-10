@@ -18,7 +18,7 @@ export default function ButtonAll() {
   const handleClick = () => {
     setIsLoading(true);
     setCookie("department_name", "all");
-    if (role !== "admin") {
+    if (role.role !== "admin") {
       setCookie("evaluate", true);
     } else {
       setCookie("evaluate", false);

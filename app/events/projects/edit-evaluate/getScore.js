@@ -4,7 +4,7 @@ async function getUserData(){
   const res = await fetch("https://admin.rupp.support/api/v1/auth/protected", {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${cookies().get("jwt")?.value}`,
+      Authorization: `Bearer ${cookies().get("token")?.value}`,
     },
   });
 
@@ -13,7 +13,7 @@ async function getUserData(){
 
 export default async function getScore() {
   const cookieStore = cookies();
-  const token = cookieStore.get("jwt");
+  const token = cookieStore.get("token");
   const projectId = cookieStore.get("project_id");
   const userData = await getUserData()
 

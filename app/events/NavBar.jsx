@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {deleteCookie} from "cookies-next";
 
 export default function Navbar() {
   const router = useRouter();
@@ -29,8 +30,7 @@ export default function Navbar() {
   }, []);
 
   const handleLogout = () => {
-    if (typeof window !== 'undefined')
-    sessionStorage.clear();
+    deleteCookie("login")
     router.push("/login");
   };
 

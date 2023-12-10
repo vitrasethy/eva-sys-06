@@ -13,7 +13,7 @@ export default async function getEvaluateData() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookies().get("jwt")?.value}`
+        Authorization: `Bearer ${cookies().get("token")?.value}`
       },
     },
   );

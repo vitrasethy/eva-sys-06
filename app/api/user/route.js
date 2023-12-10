@@ -4,7 +4,7 @@ export async function GET() {
   const res = await fetch("https://admin.rupp.support/api/v1/auth/protected", {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${cookies().get("jwt")?.value}`,
+      Authorization: `Bearer ${cookies().get("token")?.value}`,
     },
   });
   const data = await res.json();

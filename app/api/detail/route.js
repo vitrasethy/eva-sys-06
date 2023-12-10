@@ -2,7 +2,7 @@ import {cookies} from "next/headers";
 
 export async function GET() {
   const cookieStore = cookies();
-  const token = cookieStore.get("jwt");
+  const token = cookieStore.get("token");
   const projectId = cookies().get("project_id");
 
   const res = await fetch(`https://admin.rupp.support/api/v1/events/project-shortlist-committee-details/${projectId.value}`, {

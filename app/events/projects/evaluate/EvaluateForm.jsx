@@ -1,17 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
-import getEvaluateData from "./getEvaluateData";
-import {action} from "./action";
-import SubmitButton from "./SubmitButton";
+import { action } from "./action";
+import SubmitButton from "./SubmitButton"; // import {getCookie} from "cookies-next";
+
+// import {getCookie} from "cookies-next";
 
 function isOneDigit({ sco }) {
   return sco < 10;
 }
 
-export default async function EvaluateForm() {
-  const data = await getEvaluateData()
+// const projectId = getCookie('project_id')
 
+export default function EvaluateForm({ data }) {
   const allCriteria = data.category.flatMap((category) => category.criteria);
+
+  // const [pendingCheck, setPendingCheck] = useState([]);
 
   const actionWithProp = action.bind(null, allCriteria);
 
@@ -87,10 +92,12 @@ export default async function EvaluateForm() {
                   <li key={sco}>
                     <input
                       type="radio"
+                      // defaultChecked={cri.hasOwnProperty('pending_score') && cri.pending_score === cri.score}
                       id={sco.toString() + cri.name}
                       name={cri.name}
                       value={sco}
                       className="hidden peer"
+                      // onChange={() => handleOnChange(cri.id, sco)}
                       required
                     />
                     <label

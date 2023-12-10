@@ -2,7 +2,7 @@ import NoData from "@/app/events/projects/NoData";
 import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 
-export default function DataTable({ dynamicProjects }) {
+export default function DataTable({ dynamicProjects, user, handleSort }) {
   const router = useRouter();
 
   const handleClick = (projectId) => {
@@ -11,6 +11,11 @@ export default function DataTable({ dynamicProjects }) {
   };
 
   const handleClickEva = (projectId) => {
+    setCookie("project_id", projectId);
+    return router.push("/events/projects/evaluate");
+  };
+
+  const handleClickEvaEdit = (projectId) => {
     setCookie("project_id", projectId);
     return router.push("/events/projects/edit-evaluate");
   };
@@ -30,10 +35,11 @@ export default function DataTable({ dynamicProjects }) {
                 <th className="p-5 text-start">Type</th>
                 <th className="p-5 text-start">Leader</th>
                 <th
+                  onClick={handleSort}
                   className="p-5 text-start cursor-pointer flex justify-center"
                   key="score"
                 >
-                  Score
+                  {user.is_admin === true ? "Avg. Score" : "Score"}
                 </th>
                 <th className="p-5 text-start" key="action">
                   Status
@@ -42,7 +48,7 @@ export default function DataTable({ dynamicProjects }) {
             </thead>
             <tbody>
               {dynamicProjects.map((row, id) => (
-                <tr key={row.no} className={`table-row rounded-xl`}>
+                <tr key={id} className={`table-row rounded-xl`}>
                   <td className="px-5 py-4  ">{id + 1}</td>
                   <td className="px-5 py-4  ">{row.id}</td>
                   <td className="px-5 py-4  ">{row.name}</td>
@@ -56,14 +62,19 @@ export default function DataTable({ dynamicProjects }) {
                       </span>
                     )}
                   </td>
-                  <td className="px-5 py-4  ">{row.total_score}</td>
+                  <td className="px-5 py-4  ">
+                    {row.is_committee || user.is_admin
+                      ? row.total_score
+                      : "N/A"}
+                  </td>
                   <td className="px-5 py-4">
-                    <p
-                      className={`p-1 border-2 rounded-lg w-fit ${
-                        row.status === 1
-                          ? "bg-green-200 border-2 border-green-600"
-                          : ""
-                      }
+                    {row.is_committee || user.is_admin ? (
+                      <p
+                        className={`p-1 border-2 rounded-lg w-fit ${
+                          row.status === 1
+                            ? "bg-green-200 border-2 border-green-600"
+                            : ""
+                        }
                     ${
                       row.status === 0
                         ? "bg-red-200 border-2 border-red-600"
@@ -74,11 +85,14 @@ export default function DataTable({ dynamicProjects }) {
                         ? "bg-yellow-200 border-2 border-yellow-600"
                         : ""
                     }`}
-                    >
-                      {row.status === 1 ? "Completed" : ""}
-                      {row.status === 0 ? "Not Yet Evaluate" : ""}
-                      {row.status === 2 ? "Partially Evaluated" : ""}
-                    </p>
+                      >
+                        {row.status === 1 ? "Completed" : ""}
+                        {row.status === 0 ? "Not Yet Evaluate" : ""}
+                        {row.status === 2 ? "Partially Evaluated" : ""}
+                      </p>
+                    ) : (
+                      "N/A"
+                    )}
                   </td>
 
                   <td className="px-5 py-4">
@@ -94,16 +108,14 @@ export default function DataTable({ dynamicProjects }) {
                       onClick={() => handleClickEva(row.project_id)}
                       className={`btn btn-outline btn-info ${
                         row.is_committee ? "" : "hidden"
-                      } ${
-                        row.is_committee && row.status === 1 ? "hidden" : ""
-                      }`}
+                      } ${row.is_evaluated ? "hidden" : ""}`}
                     >
                       Evaluate
                     </button>
                     <button
-                      onClick={() => handleClickEva(row.project_id)}
+                      onClick={() => handleClickEvaEdit(row.project_id)}
                       className={`btn btn-outline btn-info ${
-                        row.is_committee && row.status === 1 ? "" : "hidden"
+                        row.is_evaluated ? "" : "hidden"
                       }`}
                     >
                       Edit Evaluate
@@ -155,16 +167,14 @@ export default function DataTable({ dynamicProjects }) {
                       onClick={() => handleClickEva(e.project_id)}
                       className={`btn btn-outline btn-info ${
                         e.is_committee ? "" : "hidden"
-                      } ${
-                        e.is_committee && e.status === 1 ? "hidden" : ""
-                      }`}
+                      } ${e.is_evaluated ? "hidden" : ""}`}
                     >
                       Evaluate
                     </button>
                     <button
-                      onClick={() => handleClickEva(e.project_id)}
+                      onClick={() => handleClickEvaEdit(e.project_id)}
                       className={`btn btn-outline btn-info ${
-                        e.is_committee && e.status === 1 ? "" : "hidden"
+                        e.is_evaluated ? "" : "hidden"
                       }`}
                     >
                       Edit Evaluate
@@ -177,5 +187,5 @@ export default function DataTable({ dynamicProjects }) {
         </div>
       </div>
     );
-  else return <NoData/>;
+  else return <NoData />;
 }

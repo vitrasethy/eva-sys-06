@@ -8,7 +8,7 @@ async function getUserData(){
   const res = await fetch("https://admin.rupp.support/api/v1/auth/protected", {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${cookies().get("jwt")?.value}`,
+      Authorization: `Bearer ${cookies().get("token")?.value}`,
     },
   });
 
@@ -17,8 +17,8 @@ async function getUserData(){
 
 export async function action(fetchData, formData) {
   const cookieStore = cookies();
-  const token = cookieStore.get("access_token");
-  const eventId = cookieStore.get("event_id");
+  const token = cookieStore.get("token");
+  const eventId = 1;
   const projectId = cookieStore.get("project_id");
 
   const userDetail = await getUserData();
@@ -35,10 +35,8 @@ export async function action(fetchData, formData) {
     ),
   };
 
-  console.log(data)
-
   const res = await fetch(
-    `https://admin.rupp.support/api/v1/events/${eventId.value}/project-scores`,
+    `https://admin.rupp.support/api/v1/events/${eventId}/project-scores`,
     {
       method: "POST",
       cache: "no-store",
@@ -51,7 +49,8 @@ export async function action(fetchData, formData) {
   );
 
   if (!res.ok) {
-    throw new Error("hehe");
+    const message = await res.json()
+    throw new Error(message.msg);
   }
 
   revalidatePath("/");

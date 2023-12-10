@@ -8,7 +8,7 @@ async function getUserData(){
   const res = await fetch("https://admin.rupp.support/api/v1/auth/protected", {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${cookies().get("jwt")?.value}`,
+      Authorization: `Bearer ${cookies().get("token")?.value}`,
     },
   });
 
@@ -17,7 +17,7 @@ async function getUserData(){
 
 export async function action(fetchData, formData) {
   const cookieStore = cookies();
-  const token = cookieStore.get("jwt");
+  const token = cookieStore.get("token");
   const eventId = 1
   const projectId = cookieStore.get("project_id");
 

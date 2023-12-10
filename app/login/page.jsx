@@ -1,5 +1,4 @@
 import Image from "next/image";
-// import Link from "next/link";
 import LoginForm from "./LoginForm";
 
 export default function Page() {
@@ -9,7 +8,8 @@ export default function Page() {
         <div
           className={
             "mb-10 lg:justify-center lg:flex lg:gap-x-8 lg:items-center"
-          }>
+          }
+        >
           <div className={"flex lg:flex-col lg:gap-y-4 justify-center gap-x-4"}>
             <Image
               className={"w-[50px] lg:w-[70px] lg:h-[70px] h-[50px]"}
@@ -27,17 +27,20 @@ export default function Page() {
             />
           </div>
           <hr className="lg:hidden w-[40%] h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10" />
-          <div className={"hidden lg:block w-1 h-[70px] bg-gray-100"}></div>
+          <div className={"hidden lg:block w-1 h-[160px] bg-gray-100"}></div>
           <div
             className={
               "flex lg:flex-col lg:text-6xl gap-x-2 text-xl font-bold text-white"
-            }>
+            }
+          >
             <div>PROJECT</div>
-            <div>EVALUATOR</div>
+            <div>EVALUATION</div>
             <div>SYSTEM</div>
           </div>
         </div>
-        <LoginForm/>
+        <div>
+          <LoginForm />
+        </div>
       </div>
     </main>
   );
