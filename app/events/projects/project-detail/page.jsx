@@ -38,6 +38,8 @@ export default function ProjectTable({}) {
     return "";
   }
 
+  console.log(data)
+
   return (
     <div className=" flex flex-col justify-center items-center">
       <h1 className="text-center font-extrabold text-4xl md:text-5xl px-5 my-10">
@@ -83,8 +85,8 @@ export default function ProjectTable({}) {
               user.is_admin ? "" : "hidden"
             }`}
           >
-            <div className="text-sm text-gray-500 uppercase">Total Score</div>
-            <div>{10}</div>
+            <div className={`text-sm text-gray-500 uppercase ${user.is_admin ? "" : "hidden"}`}>Total Score</div>
+            <div>{data.eve_project_total_score}</div>
           </div>
 
           <div className="bg-gray-200 p-2 rounded-md mt-2">
@@ -116,7 +118,9 @@ export default function ProjectTable({}) {
                       <div className="sm:mx-3">
                         {/*{"Point : "}*/}
                         {/*{committee.project_score}*/}
-                        {committee.project_score === 0 ? "Not Yet Evaluate" : `Point : ${committee.project_score}`}
+                        {committee.project_score === 0
+                          ? "Not Yet Evaluate"
+                          : `Point : ${committee.project_score}`}
                       </div>
                       <Image
                         className={`${

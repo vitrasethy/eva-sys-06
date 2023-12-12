@@ -3,20 +3,15 @@
 import Image from "next/image";
 import React from "react";
 import { action } from "./action";
-import SubmitButton from "./SubmitButton"; // import {getCookie} from "cookies-next";
+import SubmitButton from "./SubmitButton";
 
-// import {getCookie} from "cookies-next";
 
 function isOneDigit({ sco }) {
   return sco < 10;
 }
 
-// const projectId = getCookie('project_id')
-
 export default function EvaluateForm({ data }) {
   const allCriteria = data.category.flatMap((category) => category.criteria);
-
-  // const [pendingCheck, setPendingCheck] = useState([]);
 
   const actionWithProp = action.bind(null, allCriteria);
 

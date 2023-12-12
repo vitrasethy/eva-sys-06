@@ -4,6 +4,7 @@ import getEvaluateData from "./getEvaluateData";
 import {action} from "./action";
 import SubmitButton from "./SubmitButton";
 import getScore from "./getScore";
+import {cookies} from "next/headers";
 
 function isOneDigit({ sco }) {
   return sco < 10;
@@ -39,6 +40,9 @@ export default async function EvaluateForm() {
 
   const actionWithProp = action.bind(null, allCriteria);
 
+  const projectCode = cookies().get('project_code')
+  const projectName = cookies().get('project_name')
+
   return (
     <form className="space-y-6" action={actionWithProp}>
       <div className="flex flex-wrap justify-around">
@@ -51,13 +55,10 @@ export default async function EvaluateForm() {
           </h2>
           <div>
             <p className="text-lg font-medium">
-              Project Code: <span className="font-normal text-base">003</span>
+              Project Code: <span className="font-normal text-base">{projectCode?.value}</span>
             </p>
             <p className="text-lg font-medium">
-              Project Name:{" "}
-              <span className="font-normal text-base">
-                GASTROMOD AN INTERACTIVE TOOL FOR 3D GASTROPOD MODELING
-              </span>
+              Project Name: {projectName?.value}
             </p>
           </div>
         </div>
