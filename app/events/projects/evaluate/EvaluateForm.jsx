@@ -27,13 +27,10 @@ export default function EvaluateForm({ data }) {
           </h2>
           <div>
             <p className="text-lg font-medium">
-              Project Code: <span className="font-normal text-base">003</span>
+              Project Code: <span className="font-normal text-base">{data.project_code}</span>
             </p>
             <p className="text-lg font-medium">
-              Project Name:{" "}
-              <span className="font-normal text-base">
-                GASTROMOD AN INTERACTIVE TOOL FOR 3D GASTROPOD MODELING
-              </span>
+              Project Name: {data.project_topic}
             </p>
           </div>
         </div>

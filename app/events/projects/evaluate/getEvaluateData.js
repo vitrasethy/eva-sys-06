@@ -8,7 +8,7 @@ export default async function getEvaluateData() {
   const eventId = 1;
 
   const res = await fetch(
-    `https://admin.rupp.support/api/v1/events/${eventId}/evaluation-forms`,
+    `https://admin.rupp.support/api/v1/events/${eventId}/evaluation-forms/eve-project_id/${cookies().get("project_id")?.value}`,
     {
       method: "GET",
       headers: {

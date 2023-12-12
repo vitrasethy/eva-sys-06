@@ -10,17 +10,13 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
     return router.push("/events/projects/project-detail");
   };
 
-  const handleClickEva = (projectId, projectCode, projectName) => {
+  const handleClickEva = (projectId) => {
     setCookie("project_id", projectId);
-    setCookie("project_code", projectCode);
-    setCookie("project_name", projectName);
     return router.push("/events/projects/evaluate");
   };
 
-  const handleClickEvaEdit = (projectId, projectCode, projectName) => {
+  const handleClickEvaEdit = (projectId) => {
     setCookie("project_id", projectId);
-    setCookie("project_code", projectCode);
-    setCookie("project_name", projectName);
     return router.push("/events/projects/edit-evaluate");
   };
 
@@ -123,7 +119,7 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                   </td>
                   <td className={"px-5 py-4"}>
                     <button
-                      onClick={() => handleClickEva(row.project_id, row.id, row.name)}
+                      onClick={() => handleClickEva(row.project_id)}
                       className={`btn btn-outline btn-info ${
                         row.is_committee ? "" : "hidden"
                       } ${row.is_evaluated ? "hidden" : ""}`}
@@ -131,7 +127,7 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                       Evaluate
                     </button>
                     <button
-                      onClick={() => handleClickEvaEdit(row.project_id, row.id, row.name)}
+                      onClick={() => handleClickEvaEdit(row.project_id)}
                       className={`btn btn-outline btn-info ${
                         row.is_evaluated ? "" : "hidden"
                       }`}
@@ -182,7 +178,7 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                   </div>
                   <div className="justify-end card-actions">
                     <button
-                      onClick={() => handleClickEva(e.project_id, e.id, e.name)}
+                      onClick={() => handleClickEva(e.project_id)}
                       className={`btn btn-outline btn-info ${
                         e.is_committee ? "" : "hidden"
                       } ${e.is_evaluated ? "hidden" : ""}`}
@@ -190,7 +186,7 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                       Evaluate
                     </button>
                     <button
-                      onClick={() => handleClickEvaEdit(e.project_id, e.id, e.name)}
+                      onClick={() => handleClickEvaEdit(e.project_id)}
                       className={`btn btn-outline btn-info ${
                         e.is_evaluated ? "" : "hidden"
                       }`}

@@ -1,24 +1,11 @@
 import { cookies } from "next/headers";
 
-async function getUserData(){
-  const res = await fetch("https://admin.rupp.support/api/v1/auth/protected", {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${cookies().get("token")?.value}`,
-    },
-  });
-
-  return res.json();
-}
-
 export default async function getEvaluateData() {
   const cookieStore = cookies();
   const token = cookieStore.get("token");
-  const projectId = cookies().get("project_id");
-  const userData = await getUserData()
 
   const res = await fetch(
-    "https://admin.rupp.support/api/v1/events/1/evaluation-forms",
+    `https://admin.rupp.support/api/v1/events/${eventId}/evaluation-forms/eve-project_id/${cookies().get("project_id")?.value}`,
     {
       method: "GET",
       headers: {
