@@ -46,8 +46,6 @@ export async function action(fetchData, formData) {
       body: JSON.stringify(data),
     },
   );
-  console.log(JSON.stringify(data))
-
 
   if (!res.ok) {
     console.log(res)

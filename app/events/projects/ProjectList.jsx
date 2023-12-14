@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import DataTable from "@/app/events/projects/DataTable";
 import { getCookie } from "cookies-next";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProjectList({ projects, departments, user }) {
   const cookieChecked = getCookie("evaluate") === "true";

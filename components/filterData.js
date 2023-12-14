@@ -66,7 +66,8 @@ const evaluateData = (userData, project) => {
         };
       } else {
         data = {
-          status: 1,
+          is_evaluated: committee.is_evaluated,
+          status: 0,
           total_score: committee.project_score.toFixed(2),
         };
       }
