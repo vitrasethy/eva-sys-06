@@ -107,7 +107,7 @@ export default function ProjectList({ projects, departments, user }) {
             <input
               onChange={onCheckChange}
               type="checkbox"
-              defaultChecked={checked}
+              checked={checked}
               className="checkbox"
             />
             <span className="label-text">Show Only My Projects</span>
