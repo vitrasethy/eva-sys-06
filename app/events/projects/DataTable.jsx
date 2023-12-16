@@ -78,7 +78,9 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                   </td>
                   <td className="px-5 py-4  ">
                     {row.is_committee || user.is_admin
-                      ? row.total_score
+                      ? Number(row.total_score) < 0.01
+                        ? "No Score"
+                        : row.total_score
                       : "N/A"}
                   </td>
                   <td className="px-5 py-4">
