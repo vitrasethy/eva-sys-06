@@ -51,6 +51,13 @@ export default function Navbar() {
               href={"/award"}>
               Result
             </Link>
+            <Link
+              className={`${
+                isAdmin ? "" : "hidden"
+              } hover:bg-white hover:text-black px-5 py-6 transition ease-in-out delay-50 focus:outline-none focus:ring`}
+              href={"/events/supervisor"}>
+              Best Supervisor
+            </Link>
             <button
               onClick={() => {
                 handleLogout();
@@ -93,7 +100,14 @@ export default function Navbar() {
               <div className="menu p-4 w-80 min-h-full bg-[#014164] text-base-content">
                 {/* Sidebar content here */}
                 <p className="text-white text-2xl font-semibold mb-6">Menu</p>
-                <hr />
+                <hr/>
+                <a
+                  href={"/events/supervisor"}
+                  className={`${
+                    isAdmin ? "" : "hidden"
+                  } block text-center bg-[#014164] border-white border-2 hover:bg-[#014190] text-white focus:ring-blue-300 font-medium text-sm py-2.5 mr-2 mt-8 mb-2 focus:outline-none`}>
+                  Best Supervisor
+                </a>
                 <a
                   href={"/award"}
                   className={`${
