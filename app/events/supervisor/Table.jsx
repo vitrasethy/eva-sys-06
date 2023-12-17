@@ -1,11 +1,11 @@
 "use client";
 
 const Table = ({ data }) => {
-
+  console.log(data);
   return (
     <div>
       <main>
-        <h1 className="font-extrabold text-5xl text-gray-700 text-center mt-5">
+        <h1 className="font-extrabold text-4xl md:text-5xl text-gray-700 text-center mt-5">
           Best Supervisor
         </h1>
         <div className=" justify-center hidden md:flex">
@@ -71,25 +71,38 @@ const Table = ({ data }) => {
                 key={index}
                 className="sm:w-[70vw] w-[90vw] border shadow-md rounded-md mt-5"
               >
-                <div className=" px-4 py-2">
-                  <p className="text-gray-400">Name :</p>
-                  <p className="font-bold">{row.supervisor.name_latin}</p>
-                </div>
-                <div className="flex justify-between">
-                  <div className=" px-4 py-2">
+                <div className="flex">
+                  <div className=" px-4 py-4 ">
+                    {/* <p className="text-gray-400">No :</p> */}
+                    <p
+                      className={`font-bold border py-0.5 bg-[#014164] text-white rounded-full ${
+                        index === 0 ? "px-[10px]" : "px-[9px]"
+                      }`}
+                    >
+                      {index + 1}
+                    </p>
+                  </div>
+
+                  <div className="w-[50%] px-4 py-2">
+                    <p className="text-gray-400">Name :</p>
+                    <p className="font-bold">{row.supervisor.name_latin}</p>
+                  </div>
+                  <div className="w-[50%] px-4 py-2">
                     <p className="text-gray-400">Department :</p>
                     <p className="font-bold">{row.department}</p>
                   </div>
+                </div>
+                <div className="flex justify-between">
                   <div className=" px-4 py-2">
-                    <p className="text-gray-400">Department :</p>
+                    <p className="text-gray-400">Gold :</p>
                     <p className="font-bold">{row.supervisor.total_gold}</p>
                   </div>
                   <div className=" px-4 py-2">
-                    <p className="text-gray-400">Department :</p>
+                    <p className="text-gray-400">Silver :</p>
                     <p className="font-bold">{row.supervisor.total_silver}</p>
                   </div>
                   <div className=" px-4 py-2">
-                    <p className="text-gray-400">Department :</p>
+                    <p className="text-gray-400">Bronze :</p>
                     <p className="font-bold">{row.supervisor.total_bronze}</p>
                   </div>
                   <div className=" px-4 py-2">
@@ -106,4 +119,4 @@ const Table = ({ data }) => {
   );
 };
 
-export default Table
+export default Table;
