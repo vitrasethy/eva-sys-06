@@ -9,6 +9,7 @@ export default async function getEvaluateData() {
     `https://admin.rupp.support/api/v1/events/1/evaluation-forms/eve-project-id/${projectId?.value}`,
     {
       method: "GET",
+      cache: 'no-cache',
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token?.value,

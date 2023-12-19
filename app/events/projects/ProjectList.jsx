@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import DataTable from "@/app/events/projects/DataTable";
 import { getCookie } from "cookies-next";
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProjectList({ projects, departments, user }) {
   const cookieChecked = getCookie("evaluate") === "true";
@@ -12,8 +11,9 @@ export default function ProjectList({ projects, departments, user }) {
   const [selectYear, setSelectYear] = useState("all");
   const [selectType, setSelectType] = useState("all");
   const [checked, setChecked] = useState(cookieChecked);
-  const [dynamicProjects, setDynamicProjects] = useState([1]);
+  const [dynamicProjects, setDynamicProjects] = useState([]);
   const [sort, setSort] = useState(true);
+  const [loading, setLoading] = useState(true)
 
   const onDeptChange = (e) => setSelectDept(e.target.value);
   const onYearChange = (e) => setSelectYear(e.target.value);
@@ -29,6 +29,7 @@ export default function ProjectList({ projects, departments, user }) {
   };
 
   useEffect(() => {
+    setLoading(true)
     const filterCondition = (e) =>
       (selectDept === "all" || e.department === selectDept) &&
       (selectYear === "all" || e.year === selectYear) &&
@@ -40,6 +41,7 @@ export default function ProjectList({ projects, departments, user }) {
       (e) => filterCondition(e) && committeeFilter(e),
     );
     setDynamicProjects(filteredProjects);
+    setLoading(false)
   }, [checked, projects, selectDept, selectType, selectYear]);
 
   return (
@@ -115,11 +117,15 @@ export default function ProjectList({ projects, departments, user }) {
         </div>
       </div>
 
-      <DataTable
-        dynamicProjects={dynamicProjects}
-        user={user}
-        handleSort={handleSort}
-      />
+      {!loading ? (
+        <DataTable
+          dynamicProjects={dynamicProjects}
+          user={user}
+          handleSort={handleSort}
+        />
+      ) : (
+        <span className="mt-10 loading loading-ring loading-lg"></span>
+      )}
     </div>
   );
 }

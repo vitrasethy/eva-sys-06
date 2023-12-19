@@ -38,7 +38,6 @@ export async function action(fetchData, formData) {
     `https://admin.rupp.support/api/v1/events/${eventId}/project_shortlist/${projectId.value}/committees/${userDetail.eve_committee_id}`,
     {
       method: "PUT",
-      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token?.value,

@@ -74,7 +74,7 @@ export default async function Page() {
 
   return (
     <>
-      <ProjectList projects={allProjects} user={user} departments={departments}/>;
+      <ProjectList projects={allProjects} user={user} departments={departments}/>
     </>
   )
 

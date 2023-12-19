@@ -20,6 +20,7 @@ export default async function getScore() {
 
   const res = await fetch(`https://admin.rupp.support/api/v1/events/eve-committees/${userData.eve_committee_id}/project-shortlists/${projectId.value}`, {
     method: "GET",
+    cache: 'no-cache',
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
