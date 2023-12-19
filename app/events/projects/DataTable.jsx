@@ -23,8 +23,8 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
   if (dynamicProjects.length !== 0)
     return (
       <div>
-        <div>
-          <table className="hidden lg:block lg:pr-4 table-auto rounded-lg border-2 bg-white mt-10 border-gray-400 shadow-2xl mb-20">
+        <div className="flex justify-center items-center">
+          <table className=" lg:w-auto hidden lg:block lg:pr-4 table-auto rounded-lg border-2 bg-white mt-10 border-gray-400 shadow-2xl mb-20">
             <thead className="">
               <tr>
                 <th className="p-5 text-start">No</th>
@@ -65,7 +65,7 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                 <tr key={id} className={`table-row rounded-xl`}>
                   <td className="px-5 py-4  ">{id + 1}</td>
                   <td className="px-5 py-4  ">{row.id}</td>
-                  <td className="px-5 py-4  ">{row.name}</td>
+                  <td className="px-5 py-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[250px]">{row.name}</td>
                   <td className="px-5 py-4  ">{row.type}</td>
                   <td className="px-5 py-4  ">
                     {row.leader && row.leader.name_latin ? (
@@ -157,7 +157,9 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                   {e.status === 0 ? "Not Yet Evaluate" : ""}
                   {e.status === 2 ? "Partially Evaluated" : ""}
                 </div>
-                <h2 className="card-title">{e.name}</h2>
+                <div className=" w-80">
+  <h2 className=" font-bold whitespace-nowrap overflow-hidden overflow-ellipsis">{e.name}</h2>
+</div>
                 <p>ID: {e.id}</p>
                 <p>
                   Leader:{" "}

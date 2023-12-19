@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import DataTable from "@/app/events/projects/DataTable";
 import { getCookie } from "cookies-next";
+import arrow2 from "../../../public/arrows.svg";
+import Image from "next/image";
 
 export default function ProjectList({ projects, departments, user }) {
   const cookieChecked = getCookie("evaluate") === "true";
@@ -14,6 +16,8 @@ export default function ProjectList({ projects, departments, user }) {
   const [dynamicProjects, setDynamicProjects] = useState([]);
   const [sort, setSort] = useState(true);
   const [loading, setLoading] = useState(true)
+  const [isSortedAsc, setIsSortedAsc] = useState(true);
+  const [isSortClicked, setIsSortClicked] = useState(false);
 
   const onDeptChange = (e) => setSelectDept(e.target.value);
   const onYearChange = (e) => setSelectYear(e.target.value);
@@ -26,6 +30,8 @@ export default function ProjectList({ projects, departments, user }) {
       sort ? b.total_score - a.total_score : a.total_score - b.total_score;
     setDynamicProjects([...dynamicProjects].sort(sortingComparator));
     setSort(!sort);
+    setIsSortedAsc(!isSortedAsc);
+    setIsSortClicked(true);
   };
 
   useEffect(() => {
@@ -116,6 +122,25 @@ export default function ProjectList({ projects, departments, user }) {
           </label>
         </div>
       </div>
+      <button
+  className="lg:hidden relative flex justify-center items-center py-2 px-16 text-white bg-[#014164] rounded-md"
+  onClick={handleSort}
+>
+  Sort
+  {isSortClicked && (
+    <div className="absolute right-3" style={{ width: 20, height: 20 }}>
+      <Image
+        className={`duration-300 ${
+          isSortedAsc ? "rotate-180" : "rotate-0"
+        }`}
+        src={arrow2}
+        width={20}
+        height={20}
+        alt=" "
+      />
+    </div>
+  )}
+</button>
 
       {!loading ? (
         <DataTable
