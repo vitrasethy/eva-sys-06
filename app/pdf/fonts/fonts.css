@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'KhmerBTB';
+    src: url('KhmerOSBattambang-Regular.ttf')  format('truetype'),
+}
+@font-face {
+    font-family: 'KhmerMoulLight';
+    src: url('KhmerOSMoulLight.ttf') format('truetype'),;
+}
+@font-face {
+    font-family: 'KhmerOSSiemreap';
+    src: url('KhmerOSSiemreap.ttf') format('truetype'),;
+}
