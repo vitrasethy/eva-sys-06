@@ -128,7 +128,7 @@ export default function Award({ year1PosterData, fromYear2Data }) {
         document.addEventListener("keydown", handleKeyDown);
         return () => document.removeEventListener("keydown", handleKeyDown);
     }, []);
-
+    document.body.style.overflow = "hidden";
     return (
         <>
             <main>
@@ -137,17 +137,17 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                         <div id="particle-container">{particles}</div>
 
                         <div className="text-center h-full flex flex-col justify-center items-center">
-                            <h1 className="text-4xl tracking-tight font-extrabold font-['Georgia'] uppercase sm:text-5xl md:text-[10rem] bg-gradient-to-r from-[#3b7cc1] to-[#9ae2ff] inline-block text-transparent bg-clip-text drop-shadow-[7px_5px_rgba(205,245,253,0.2)]">
+                            <h1 className="text-8xl tracking-tight font-extrabold font-['Georgia'] uppercase bg-gradient-to-r from-[#3b7cc1] to-[#9ae2ff] inline-block text-transparent bg-clip-text drop-shadow-[7px_5px_rgba(205,245,253,0.2)]">
                                 Engineering&apos;s Day
                             </h1>
-                            <p className="max-w-4xl mx-auto text-6xl mt-8 text-white leading-snug">
+                            <p className="max-w-4xl mx-auto text-4xl mt-8 text-white leading-snug">
                                 Award of Engineering&apos;s Day 2023
                             </p>
-                            <p className="max-w-4xl mx-auto text-5xl mt-8 text-white">
+                            <p className="max-w-4xl mx-auto text-4xl mt-8 text-white">
                                 Congratulation to the winners...
                             </p>
                             <div className="flex gap-8 mt-8">
-                                <select className="border-2 bg-transparent text-white px-4 py-2 text-2xl" defaultValue="" onChange={onDeptChange}>
+                                <select className="border-2 bg-transparent text-white px-4 py-2 text-xl" defaultValue="" onChange={onDeptChange}>
                                     <option value="" disabled>ALL</option>
                                     <option value="ALL">FE</option>
                                     <option value="Information Technology Engineering">ITE</option>
@@ -157,7 +157,7 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                     <option value="Environmental Engineering">EE</option>
                                 </select>
 
-                                <select className="border-2 bg-transparent text-white px-4 py-2 text-2xl" defaultValue="" onChange={onYearChange}>
+                                <select className="border-2 bg-transparent text-white px-4 py-2 text-xl" defaultValue="" onChange={onYearChange}>
                                     <option value="" disabled>Year</option>
                                     <option value="Year1">1</option>
                                     <option value="Year2">2</option>
@@ -165,9 +165,9 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                     <option value="Year4">4</option>
                                 </select>
                             </div>
-                            <div className="flex gap-12 text-white mt-8 text-2xl items-center" onChange={onTypeChange}>
-                                <input id="default-radio-1" type="radio" value="Presentation" name="default-radio" className="w-6 h-6" />&nbsp;Presentation
-                                <input id="default-radio-2" type="radio" value="Poster" name="default-radio" className="w-6 h-6" />&nbsp;Poster
+                            <div className="flex gap-12 text-white mt-8 text-xl items-center" onChange={onTypeChange}>
+                                <input id="default-radio-1" type="radio" value="Presentation" name="default-radio" className="w-5 h-5" />&nbsp;Presentation
+                                <input id="default-radio-2" type="radio" value="Poster" name="default-radio" className="w-5 h-5" />&nbsp;Poster
                             </div>
 
                         </div>
@@ -185,133 +185,135 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                             <div className="after"></div>
                         </div>
                         <div className=" h-full flex flex-col justify-center items-center">
-                            <div className="text-white flex justify-center items-center gap-16 mb-16">
-                                <div className="flex gap-4">
-                                    <Image
-                                        src="/RUPP logo.png"
-                                        alt=""
-                                        width={200}
-                                        height={150}
-                                        className=" object-cover bg-no-repeat"
-                                    />
-                                    <div className="flex">
+                            <div className="text-white flex justify-center items-center gap-16 mb-8">
+                                <div className="flex items-center gap-4 w-auto">
+                                    <div>
+                                        <Image
+                                            src="/RUPP logo.png"
+                                            alt=""
+                                            width={125}
+                                            height={50}
+                                            className=" object-cover bg-no-repeat"
+                                        />
+                                    </div>
+                                    <div className="flex border-2 border-white">
                                         <Image
                                             src="/FE Logo v1.jpg"
                                             alt=""
-                                            width={150}
-                                            height={140}
-                                            className=" object-cover bg-no-repeat"
+                                            width={105}
+                                            height={40}
+                                            className="sm:w-[90px] sm:h-[120px] object-cover bg-no-repeat"
                                         />
                                         <Image
                                             src="/EDay6th.png"
                                             alt=""
-                                            width={480}
-                                            height={140}
-                                            className=" object-cover bg-no-repeat border-white border-4"
+                                            width={338}
+                                            height={40}
+                                            className="sm:w-[300px] sm:h-[120px] object-contain bg-no-repeat border-white border-2"
                                         />
                                     </div>
                                 </div>
-                                <h1 className="text-7xl font-semibold">Engineering&apos;s Day 2023</h1>
+                                <h1 className="text-5xl font-semibold">Engineering&apos;s Day 2023</h1>
                             </div>
                             <div className="bg-[url('/reward3.jpeg')] bg-no-repeat bg-cover border-2 border-gray-500">
 
-                                <div className="flex flex-col justify-center h-full rounded-md bg-sky-950/30 backdrop-brightness-[.6] w-full px-20 py-10">
+                                <div className="flex flex-col justify-center h-full rounded-md bg-sky-950/30 backdrop-brightness-[.6] w-full px-14 py-8">
                                     <div>
                                         <div className="text-white text-center">
-                                            <h3 className="text-[3.5rem] font-medium">Leader Board</h3>
-                                            <h2 className="my-6 text-4xl">Department: {selectDept}</h2>
-                                            <h2 className="text-4xl">Year: {selectYear.slice(4)}</h2>
+                                            <h3 className="text-5xl font-medium">Leader Board</h3>
+                                            <h2 className="my-2 text-3xl">Department: {selectDept}</h2>
+                                            <h2 className="text-3xl">Year: {selectYear.slice(4)}</h2>
                                         </div>
-                                        <div className="my-8 flex gap-8 w-fit text-white text-center text-3xl">
+                                        <div className="my-5 flex gap-4 w-fit text-white text-center text-xl">
                                             <div>
                                                 <p>Diamond sponsor</p>
-                                                <div className="mt-2 bg-white w-[260px] flex justify-center">
-                                                <Image
-                                                    src="/intech@2x.png"
-                                                    alt=""
-                                                    width={180}
-                                                    height={40}
-                                                    className="sm:w-[220px] sm:h-[150px] object-cover bg-no-repeat"
-                                                />
+                                                <div className="mt-2 bg-white w-[180px] flex justify-center">
+                                                    <Image
+                                                        src="/intech@2x.png"
+                                                        alt=""
+                                                        width={180}
+                                                        height={40}
+                                                        className="sm:w-[150px] sm:h-[100px] object-cover bg-no-repeat"
+                                                    />
                                                 </div>
                                             </div>
                                             <div>
                                                 <p>Platinum sponsor</p>
-                                                <div  className="mt-2 bg-white w-[260px] flex justify-center">
-                                                <Image
-                                                    src="/beniten.png"
-                                                    alt=""
-                                                    width={150}
-                                                    height={50}
-                                                    className="sm:w-[220px] sm:h-[150px] object-cover bg-no-repeat bg-white"
-                                                />
+                                                <div className="mt-2 bg-white w-[180px] flex justify-center">
+                                                    <Image
+                                                        src="/beniten.png"
+                                                        alt=""
+                                                        width={150}
+                                                        height={50}
+                                                        className="sm:w-[150px] sm:h-[100px] object-cover bg-no-repeat bg-white"
+                                                    />
                                                 </div>
                                             </div>
                                             <div>
                                                 <p>Silver sponsor</p>
-                                                <div className="mt-2 bg-white flex gap-4 w-[590px]">
+                                                <div className="mt-2 bg-white flex gap-4 w-[500px]">
                                                     <Image
                                                         src="/DKSH.png"
                                                         alt=""
                                                         width={150}
                                                         height={50}
-                                                        className="sm:w-[220px] sm:h-[150px] object-cover bg-no-repeat"
+                                                        className="sm:w-[150px] sm:h-[100px] object-cover bg-no-repeat"
                                                     />
                                                     <Image
                                                         src="/Dynamic.png"
                                                         alt=""
                                                         width={150}
                                                         height={50}
-                                                        className="sm:w-[220px] sm:h-[150px] object-cover bg-no-repeat"
+                                                        className="sm:w-[150px] sm:h-[100px] object-cover bg-no-repeat"
                                                     />
                                                     <Image
                                                         src="/stellent.png"
                                                         alt=""
                                                         width={150}
                                                         height={50}
-                                                        className="sm:w-[220px] sm:h-[150px] object-cover bg-no-repeat"
+                                                        className="sm:w-[150px] sm:h-[100px] object-cover bg-no-repeat"
                                                     />
                                                 </div>
                                             </div>
                                             <div>
                                                 <p>Bronze sponsor</p>
-                                            <div className="mt-2 bg-white gap-6 flex w-[800px] h-[150px] justify-center items-center">
-                                            <Image
-                                                src="/cp.png"
-                                                alt=""
-                                                width={150}
-                                                height={50}
-                                                className="sm:w-[130px] sm:h-[110px] object-cover bg-no-repeat"
-                                            />
-                                            <Image
-                                                src="/koica.png"
-                                                alt=""
-                                                width={150}
-                                                height={50}
-                                                className="sm:w-[130px] sm:h-[110px] object-cover bg-no-repeat"
-                                            />
-                                            <Image
-                                                src="/rs.png"
-                                                alt=""
-                                                width={150}
-                                                height={50}
-                                                className="sm:w-[130px] sm:h-[110px] object-cover bg-no-repeat"
-                                            />
-                                            <Image
-                                                src="/x lap.png"
-                                                alt=""
-                                                width={150}
-                                                height={50}
-                                                className="sm:w-[130px] sm:h-[110px] object-cover bg-no-repeat"
-                                            />
-                                            <Image
-                                                src="/sp.png"
-                                                alt=""
-                                                width={150}
-                                                height={50}
-                                                className="sm:w-[130px] sm:h-[110px] object-cover bg-no-repeat"
-                                            />
-                                            </div>
+                                                <div className="mt-2 bg-white gap-6 flex w-[610px] h-[100px] justify-center items-center">
+                                                    <Image
+                                                        src="/cp.png"
+                                                        alt=""
+                                                        width={150}
+                                                        height={50}
+                                                        className="sm:w-[100px] sm:h-[90px] object-cover bg-no-repeat"
+                                                    />
+                                                    <Image
+                                                        src="/koica.png"
+                                                        alt=""
+                                                        width={150}
+                                                        height={50}
+                                                        className="sm:w-[110px] sm:h-[90px] object-cover bg-no-repeat"
+                                                    />
+                                                    <Image
+                                                        src="/rs.png"
+                                                        alt=""
+                                                        width={150}
+                                                        height={50}
+                                                        className="sm:w-[110px] sm:h-[90px] object-cover bg-no-repeat"
+                                                    />
+                                                    <Image
+                                                        src="/x lap.png"
+                                                        alt=""
+                                                        width={150}
+                                                        height={50}
+                                                        className="sm:w-[110px] sm:h-[90px] object-cover bg-no-repeat"
+                                                    />
+                                                    <Image
+                                                        src="/sp.png"
+                                                        alt=""
+                                                        width={150}
+                                                        height={50}
+                                                        className="sm:w-[110px] sm:h-[90px] object-cover bg-no-repeat"
+                                                    />
+                                                </div>
                                             </div>
 
                                         </div>
@@ -322,13 +324,13 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                             {index < 3 && show[`winner${index + 1}`] && (
                                                 <div id={`winner${index + 1}`}>
                                                     <div className="relative flex justify-center items-center">
-                                                        <div className={`bg-gradient-to-r ${getGradientColor(index + 1)} shadow-lg border-1 py-14 px-[4rem] rounded-xl w-[125.5rem]`}>
-                                                            <p className="text-5xl text-center">{item.rank}{getRankSuffix(index + 1)} Winner</p>
+                                                        <div className={`bg-gradient-to-r ${getGradientColor(index + 1)} shadow-lg border-1 py-10 px-[2rem] w-[95rem] rounded-xl`}>
+                                                            <p className="text-[2rem] text-center">{item.rank}{getRankSuffix(index + 1)} Winner</p>
                                                             <div className="flex my-4 justify-between items-center">
-                                                                <h2 className="text-4xl">Department: {selectDept == "ALL" ? item.department : selectDept}</h2>
-                                                                <h2 className="text-4xl">Year: {selectYear.slice(4)}</h2>
+                                                                <h2 className="text-2xl">Department: {selectDept == "ALL" ? item.department : selectDept}</h2>
+                                                                <h2 className="text-2xl">Year: {selectYear.slice(4)}</h2>
                                                             </div>
-                                                            <div className="text-[2.5rem] text-center w-full uppercase flex flex-col justify-center gap-4">
+                                                            <div className="text-3xl text-center w-full uppercase flex flex-col justify-center gap-4">
                                                                 <p>Project Name: {item.projects.project_topic}</p>
                                                                 <p>Project ID: {item.projects.project_code}</p>
                                                             </div>
@@ -336,8 +338,8 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                                         <Image
                                                             src={getMedalImage(index + 1)}
                                                             alt=""
-                                                            width={80}
-                                                            height={90}
+                                                            width={70}
+                                                            height={80}
                                                             className="absolute top-[-14px] left-[-25px] rotate-12"
                                                         />
                                                     </div>
@@ -349,19 +351,19 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                     {show.allWinner && (
                                         <div id="allWinner">
                                             {newData.slice(0, 3).map((item, index) => (
-                                                <div key={index} className={`relative mt-${index === 0 ? '0' : '8'}`}>
-                                                    <div className={`flex bg-gradient-to-r ${getGradientColor(index + 1)} shadow-lg border-1 py-6 px-[4rem] rounded-xl h-[11rem]`}>
-                                                        <div className="flex gap-16 text-4xl items-center w-full">
+                                                <div key={index} className={`relative mt-${index === 0 ? '0' : '4'}`}>
+                                                    <div className={`flex bg-gradient-to-r ${getGradientColor(index + 1)} shadow-lg border-1 py-4 px-[4rem] rounded-xl h-[7.5rem]`}>
+                                                        <div className="flex gap-8 text-2xl items-center w-full">
                                                             <p>{item.rank}{getRankSuffix(index + 1)}</p>
-                                                            <p className={`w-[98rem] leading-snug`}>{item.projects.project_topic}</p>
+                                                            <p className={`w-[74rem] leading-snug`}>{item.projects.project_topic}</p>
                                                             <p className="">{item.projects.project_code}</p>
                                                         </div>
                                                     </div>
                                                     <Image
                                                         src={getMedalImage(index + 1)}
                                                         alt=""
-                                                        width={70}
-                                                        height={80}
+                                                        width={60}
+                                                        height={70}
                                                         className="absolute top-[-10px] left-[-25px] rotate-12"
                                                     />
                                                 </div>
@@ -369,7 +371,7 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                         </div>
                                     )}
 
-                                    <p className="text-center text-3xl mt-8 text-white">Royal University of Phnom Penh || Faculty of Engineering</p>
+                                    <p className="text-center text-xl mt-8 text-white">Royal University of Phnom Penh || Faculty of Engineering</p>
                                 </div>
 
                             </div>
