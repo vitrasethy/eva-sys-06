@@ -172,11 +172,11 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                 <select className="border-2 bg-transparent text-white px-4 py-2 text-2xl" defaultValue="" onChange={onDeptChange}>
                                     <option value="" disabled>ALL</option>
                                     <option value="ALL">FE</option>
-                                    <option value="IT Engineering">ITE</option>
-                                    <option value="Bio-Engineering Biotechnology">BIO</option>
-                                    <option value="Supply Chain & Automation">ASCSE</option>
+                                    <option value="Information Technology Engineering">ITE</option>
+                                    <option value="Bio Engineering">BIO</option>
+                                    <option value="Supply Chain and Automation Engineering">ASCSE</option>
                                     <option value="Environmental Engineering">EE</option>
-                                    <option value="Telecommunication And Electronic Engineering">TEED</option>
+                                    <option value="Telecommunication and Electric Engineering">TEED</option>
                                 </select>
 
                                 <select className="border-2 bg-transparent text-white px-4 py-2 text-2xl" defaultValue="" onChange={onYearChange}>
