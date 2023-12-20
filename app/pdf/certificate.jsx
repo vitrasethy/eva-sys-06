@@ -169,7 +169,7 @@ function Certificate({ dataY2, dataY1 }) {
                             {selectType === 'Poster' ? (<p>{item.rank} Award for top poster entitled</p>) : (<p>{item.rank} Award for top project entitled</p>)}
                           </div>
                           <div className="flex italic">
-                            <p className=" w-full text-center">&quot;{item.project.project_topic}n&quot;</p>
+                            <p className=" w-full text-center">&quot;{item.project.project_topic}&quot;</p>
                           </div>
                         </div>
                       </div>
@@ -197,7 +197,7 @@ function Certificate({ dataY2, dataY1 }) {
                             {selectType === 'Poster' ? (<p>Poster ឆ្នើមលេខ {item.rank.toString().toKhmerDigit()} ក្រោមប្រធាមបទ</p>) : (<p>គម្រោងឆ្នើមលេខ {item.rank.toString().toKhmerDigit()} ក្រោមប្រធាមបទ</p>)}
                           </div>
                           <span className="font-['serif'] text-[13pt] italic">
-                            <p>&quot;{item.project.project_topic}n&quot;</p>
+                            <p>&quot;{item.project.project_topic}&quot;</p>
                           </span>
                         </div>
                       </div>
