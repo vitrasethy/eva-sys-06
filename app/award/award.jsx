@@ -128,14 +128,11 @@ export default function Award({ year1PosterData, fromYear2Data }) {
         document.addEventListener("keydown", handleKeyDown);
         return () => document.removeEventListener("keydown", handleKeyDown);
     }, []);
-    document.body.style.overflow = "hidden";
     return (
-        <>
             <main>
                 <div className="bg-[#070707]">
                     <section className="first-screen h-screen">
                         <div id="particle-container">{particles}</div>
-
                         <div className="text-center h-full flex flex-col justify-center items-center">
                             <h1 className="text-8xl tracking-tight font-extrabold font-['Georgia'] uppercase bg-gradient-to-r from-[#3b7cc1] to-[#9ae2ff] inline-block text-transparent bg-clip-text drop-shadow-[7px_5px_rgba(205,245,253,0.2)]">
                                 Engineering&apos;s Day
@@ -156,7 +153,6 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                     <option value="Supply Chain and Automation Engineering">ASCSE</option>
                                     <option value="Environmental Engineering">EE</option>
                                 </select>
-
                                 <select className="border-2 bg-transparent text-white px-4 py-2 text-xl" defaultValue="" onChange={onYearChange}>
                                     <option value="" disabled>Year</option>
                                     <option value="Year1">1</option>
@@ -166,19 +162,14 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                 </select>
                             </div>
                             <div className="flex gap-12 text-white mt-8 text-xl items-center" onChange={onTypeChange}>
-                                <input id="default-radio-1" type="radio" value="Presentation" name="default-radio" className="w-5 h-5" />&nbsp;Presentation
-                                <input id="default-radio-2" type="radio" value="Poster" name="default-radio" className="w-5 h-5" />&nbsp;Poster
+                                <input id="default-radio-1" type="radio" value="Presentation" name="default-radio" className="w-5 h-5" />{' '}Presentation
+                                <input id="default-radio-2" type="radio" value="Poster" name="default-radio" className="w-5 h-5" />{' '}Poster
                             </div>
-
                         </div>
                     </section>
-
                     <div className="h-screen">
                         <div id="particle-container">{particles}</div>
                     </div>
-
-
-
                     <section className="second-screen h-screen">
                         <div className="pyro">
                             <div className="before"></div>
@@ -216,7 +207,6 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                 <h1 className="text-5xl font-semibold">Engineering&apos;s Day 2023</h1>
                             </div>
                             <div className="bg-[url('/reward3.jpeg')] bg-no-repeat bg-cover border-2 border-gray-500">
-
                                 <div className="flex flex-col justify-center h-full rounded-md bg-sky-950/30 backdrop-brightness-[.6] w-full px-14 py-8">
                                     <div>
                                         <div className="text-white text-center">
@@ -315,10 +305,8 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                                     />
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                     {newData.map((item, index) => (
                                         <div key={index}>
                                             {index < 3 && show[`winner${index + 1}`] && (
@@ -347,7 +335,6 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                             )}
                                         </div>
                                     ))}
-
                                     {show.allWinner && (
                                         <div id="allWinner">
                                             {newData.slice(0, 3).map((item, index) => (
@@ -370,17 +357,12 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                             ))}
                                         </div>
                                     )}
-
                                     <p className="text-center text-xl mt-8 text-white">Royal University of Phnom Penh || Faculty of Engineering</p>
                                 </div>
-
                             </div>
                         </div>
                     </section>
-
                 </div>
             </main>
-        </>
-
     );
 }
