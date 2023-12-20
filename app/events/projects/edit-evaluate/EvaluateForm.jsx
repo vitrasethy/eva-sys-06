@@ -35,6 +35,19 @@ export default function EvaluateForm() {
     return <div>Loading...</div>; // Render a loading indicator if the data is still loading
   }
 
+  function toRoman(num) {
+    const roman = { M:1000, CM:900, D:500, CD:400, C:100, XC:90, L:50, XL:40, X:10, IX:9, V:5, IV:4, I:1 };
+    let str = '';
+  
+    for (let i of Object.keys(roman)) {
+      let q = Math.floor(num / roman[i]);
+      num -= q * roman[i];
+      str += i.repeat(q);
+    }
+  
+    return str;
+  }
+
   return (
     <main className="md:mx-[3%] my-[5%]">
       <div className="h-auto flex justify-center">
@@ -90,19 +103,20 @@ export default function EvaluateForm() {
             {scores.committees && scores.committees[0].projects[0].categories.map((cat, id) => (
               <div key={id}>
                 <div className="flex justify-around items-center border-2 border-sky-700 py-4 px-6 bg-[#014164] text-white rounded-md">
-                  <h4 className="text-lg font-bold w-1/2 p-2.5">{cat.name}</h4>
+                  <h4 className="text-lg font-bold w-1/2 p-2.5">{`${toRoman(id+1)}. ${cat.name}`}</h4>
                   <h4 className="text-lg font-bold text-center w-1/2">
-                    {0.7 * 100}&nbsp;%
+                    
+                    {id === 0 ? 70 : id === 1 ? 30 : 10}&nbsp;%
                   </h4>
                 </div>
-                {cat.criterias.map((cri) => (
+                {cat.criterias.map((cri, index) => (
                   <div
                     key={cri.id}
                     className="md:flex md:justify-around my-10 p-4 sm:px-6 rounded-lg bg-[#f7f9f9] border-2 border-gray-300 "
                   >
                     <div className="md:w-1/2">
-                      <h2 className="text-gray-900 text-lg rounded-lg peer-checked:ring-blue-500 peer-checked:border-blue-500 block w-full p-2.5">
-                        {cri.name}
+                      <h2 className="flex text-gray-900 text-lg rounded-lg peer-checked:ring-blue-500 peer-checked:border-blue-500 w-full p-2.5">
+                        <p className=" font-bold">{index + 1}. </p>&nbsp;{ cri.name}
                       </h2>
                     </div>
                     <ul className="flex items-center gap-1 md:gap-2 justify-center mt-4 md:mt-0 mb-4 md:mb-0">
