@@ -65,7 +65,9 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                 <tr key={id} className={`table-row rounded-xl`}>
                   <td className="px-5 py-4  ">{id + 1}</td>
                   <td className="px-5 py-4  ">{row.id}</td>
-                  <td className="px-5 py-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[250px]">{row.name}</td>
+                  <td className="px-5 py-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[250px]">
+                    {row.name}
+                  </td>
                   <td className="px-5 py-4  ">{row.type}</td>
                   <td className="px-5 py-4  ">
                     {row.leader && row.leader.name_latin ? (
@@ -142,10 +144,10 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
             </tbody>
           </table>
         </div>
-        <div className={"flex flex-col items-center space-y-4 w-full"}>
+        <div className={"flex flex-col items-center space-y-4 w-screen"}>
           {dynamicProjects.map((e, i) => (
-            <div key={i} className="card bg-base-100 shadow-xl lg:hidden px-2">
-              <div className="static card-body w-[90vw]">
+            <div key={i} className="w-[90%] card bg-base-100 shadow-xl lg:hidden px-2">
+              <div className="static card-body">
                 <div
                   className={`absolute gap-2 rounded badge ${
                     e.status === 0 ? "badge-error" : ""
@@ -157,19 +159,19 @@ export default function DataTable({ dynamicProjects, user, handleSort }) {
                   {e.status === 0 ? "Not Yet Evaluate" : ""}
                   {e.status === 2 ? "Partially Evaluated" : ""}
                 </div>
-                <div className=" w-80">
-  <h2 className=" font-bold whitespace-nowrap overflow-hidden overflow-ellipsis">{e.name}</h2>
-</div>
+                <div className="">
+                  <h2 className="font-bold truncate">
+                    {e.name}
+                  </h2>
+                </div>
                 <p>ID: {e.id}</p>
                 <p>
-                  Leader:{" "}
-                  {e.leader && e.leader.name_latin ? (
-                    e.leader.name_latin
-                  ) : (
-                    <span style={{ color: "red" }}>
-                      Leader or leader.name_latin is undefined!
-                    </span>
-                  )}
+                  Score:{" "}
+                  {e.is_committee || user.is_admin
+                    ? Number(e.total_score) < 0.01
+                      ? "No Score"
+                      : e.total_score
+                    : "N/A"}
                 </p>
                 <div className="flex justify-between">
                   <div className="justify-end card-actions">
