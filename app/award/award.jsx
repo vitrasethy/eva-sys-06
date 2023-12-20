@@ -131,28 +131,6 @@ export default function Award({ year1PosterData, fromYear2Data }) {
 
     return (
         <>
-            {/* <select onChange={onDeptChange}>
-                <option value="ALL">ALL</option>
-                <option value="IT Engineering">ITE</option>
-                <option value="Bio-Engineering Biotechnology">BIO</option>
-                <option value="Supply Chain & Automation">ASCSE</option>
-                <option value="Environmental Engineering">EE</option>
-                <option value="Telecommunication And Electronic Engineering">TEED</option>
-            </select>
-            <select onChange={onYearChange}>
-                <option value="Year1">Year 1</option>
-                <option value="Year2">Year 2</option>
-                <option value="Year3">Year 3</option>
-                <option value="Year4">Year 4</option>
-            </select>
-            <select onChange={onTypeChange}>
-                <option value="Presentation">Presentation</option>
-                <option value="Poster">Poster</option>
-            </select> */}
-            {/* testing data*/}
-            {/* <div>{JSON.stringify(newData.poster.years[0].ranks)}</div> */}
-            {/* <div>{JSON.stringify(newData)}</div> */}
-
             <main>
                 <div className="bg-[#070707]">
                     <section className="first-screen h-screen">
@@ -174,9 +152,9 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                     <option value="ALL">FE</option>
                                     <option value="Information Technology Engineering">ITE</option>
                                     <option value="Bio Engineering">BIO</option>
-                                    <option value="Supply Chain and Automation">ASCSE</option>
+                                    <option value="Telecommunication and Electric Engineering">TEED</option>
+                                    <option value="Supply Chain and Automation Engineering">ASCSE</option>
                                     <option value="Environmental Engineering">EE</option>
-                                    <option value="Telecommunication And Electric Engineering">TEED</option>
                                 </select>
 
                                 <select className="border-2 bg-transparent text-white px-4 py-2 text-2xl" defaultValue="" onChange={onYearChange}>
