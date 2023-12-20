@@ -138,7 +138,7 @@ function Certificate({ dataY2, dataY1 }) {
           {item.project.project_members.map((member, id) => (
 
               <div key={id}
-                className="myDivClass bg-[url('/ctf.png')] bg-contain w-[297mm] h-[210mm] bg-no-repeat"
+                className="myDivClass w-[297mm] h-[210mm] bg-no-repeat"
               >
                 <div className="flex flex-col justify-center items-center h-full">
                   <div className="pt-[5rem]">
