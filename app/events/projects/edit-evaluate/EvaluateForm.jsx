@@ -3,15 +3,15 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import SubmitButton from "@/app/events/projects/edit-evaluate-v1/SubmitButton";
+import {action} from "@/app/events/projects/edit-evaluate-v1/action";
 
 function isOneDigit({ sco }) {
   return sco < 10;
 }
 
 export default function EvaluateForm() {
-  const [evaForm, setEvaForm] = useState([]);
+  const [evaForm, setEvaForm] = useState([])
   const [scores, setScores] = useState([]);
-  const [combined, setCombined] = useState([])
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,34 +22,14 @@ export default function EvaluateForm() {
       .then((res) => res.json())
       .then((e) => setScores(e));
 
-    // for checking which radio should be checked
-    const combinedCriteria = [];
-    if (scores.committees) {
-      scores.committees.forEach((committee) => {
-        committee.projects.forEach((project) => {
-          project.categories.forEach((category) => {
-            combinedCriteria.push(
-              ...category.criterias.map((criteria) => ({
-                category_id: category.id,
-                category_name: category.name,
-                criteria_id: criteria.id,
-                criteria_name: criteria.name,
-                score: criteria.score,
-                rubric: criteria.rubric,
-              })),
-            );
-          });
-        });
-      });
-    }
-    setCombined(combinedCriteria)
     setLoading(false);
-  }, [scores.committees]);
+  }, []);
 
-  const isCheck = (id, score) => {
-    const result = combined.find((item) => item.criteria_id === id);
-    return result.score === score;
-  };
+  let allCriteria
+  if (scores.committees) {
+    allCriteria = scores.committees[0].projects[0].categories.flatMap((category) => category.criterias);
+  }
+  const actionWithProp = action.bind(null, allCriteria);
 
   if (loading) {
     return <div>Loading...</div>; // Render a loading indicator if the data is still loading
@@ -59,7 +39,7 @@ export default function EvaluateForm() {
     <main className="md:mx-[3%] my-[5%]">
       <div className="h-auto flex justify-center">
         <div className="w-screen xl:w-[70%] p-6 bg-white border-2 border-gray-300 rounded-lg shadow sm:p-6 md:p-16">
-          <form className="space-y-6">
+          <form className="space-y-6" action={actionWithProp}>
             <div className="flex flex-wrap justify-around">
               <div className="sm:w-[45%] my-4">
                 <Image alt="" src="/bgcol.png" width={400} height={400} />
@@ -107,15 +87,15 @@ export default function EvaluateForm() {
                 </div>
               </div>
             </div>
-            {evaForm.category && evaForm.category.map((cat, id) => (
+            {scores.committees && scores.committees[0].projects[0].categories.map((cat, id) => (
               <div key={id}>
                 <div className="flex justify-around items-center border-2 border-sky-700 py-4 px-6 bg-[#014164] text-white rounded-md">
                   <h4 className="text-lg font-bold w-1/2 p-2.5">{cat.name}</h4>
                   <h4 className="text-lg font-bold text-center w-1/2">
-                    {cat.weight * 100}&nbsp;%
+                    {0.7 * 100}&nbsp;%
                   </h4>
                 </div>
-                {cat.criteria.map((cri) => (
+                {cat.criterias.map((cri) => (
                   <div
                     key={cri.id}
                     className="md:flex md:justify-around my-10 p-4 sm:px-6 rounded-lg bg-[#f7f9f9] border-2 border-gray-300 "
@@ -126,13 +106,13 @@ export default function EvaluateForm() {
                       </h2>
                     </div>
                     <ul className="flex items-center gap-1 md:gap-2 justify-center mt-4 md:mt-0 mb-4 md:mb-0">
-                      {cri.score.map((sco) => (
+                      {cri.eva_score.map((sco) => (
                         <li key={sco}>
                           <input
-                            defaultChecked={isCheck(cri.id, sco)}
+                            defaultChecked={sco === cri.score}
                             type="radio"
                             id={sco.toString() + cri.name}
-                            name={cri.id.toString()}
+                            name={cri.name}
                             value={sco}
                             className="hidden peer"
                             required
@@ -161,6 +141,7 @@ export default function EvaluateForm() {
               <div className="md:w-1/2">
                 <textarea
                   name="comment"
+                  defaultValue={scores.committees && scores.committees[0].projects[0].comment}
                   rows={4}
                   cols={60}
                   className="border-2 border-gray-400 p-4 w-full"
