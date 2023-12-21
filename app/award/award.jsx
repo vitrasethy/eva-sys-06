@@ -162,8 +162,8 @@ export default function Award({ year1PosterData, fromYear2Data }) {
                                 </select>
                             </div>
                             <div className="flex gap-12 text-white mt-8 text-xl items-center" onChange={onTypeChange}>
-                                <input id="default-radio-1" type="radio" value="Presentation" name="default-radio" className="w-5 h-5" />{' '}Presentation
                                 <input id="default-radio-2" type="radio" value="Poster" name="default-radio" className="w-5 h-5" />{' '}Poster
+                                <input id="default-radio-1" type="radio" value="Presentation" name="default-radio" className="w-5 h-5" />{' '}Presentation
                             </div>
                         </div>
                     </section>
