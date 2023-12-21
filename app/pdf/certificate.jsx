@@ -16,6 +16,18 @@ function Certificate({ dataY2, dataY1 }) {
   const onYearChange = (e) => setSelectYear(e.target.value);
   const onTypeChange = (e) => setSelectType(e.target.value);
   
+  const getRankSuffix = (rank) => {
+    switch (rank) {
+        case 1:
+            return "st";
+        case 2:
+            return "nd";
+        case 3:
+            return "rd";
+        default:
+            return "";
+    }
+};
 
   String.prototype.toKhmerDigit = function () {
     var id = ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"];
@@ -145,7 +157,7 @@ function Certificate({ dataY2, dataY1 }) {
                     <div className="grid grid-cols-2 gap-[122px]">
                       <div className="flex flex-col justify-center text-center items-center font-['Times New Roman'] gap-1 w-[391px] h-[300px]">
                         <p className="font-extrabold text-[17.5pt] pt-px font-['HelveticaNowMTTextRegular']">
-                          6th ENGINEERING DAY
+                          6<sup>th</sup> ENGINEERING DAY
                         </p>
                         <p className="text-[14pt] font-['HelveticaNowMTTextRegular'] font-normal">
                           AWARDS 2023
@@ -166,7 +178,7 @@ function Certificate({ dataY2, dataY1 }) {
                         <div className="text-[13pt] text-center font-['serif']">
                           <p className="">in recognition for winning the</p>
                           <div className="">
-                            {selectType === 'Poster' ? (<p>{item.rank} Award for top poster entitled</p>) : (<p>{item.rank} Award for top project entitled</p>)}
+                            {selectType === 'Poster' ? (<p>{item.rank}<sup>{getRankSuffix(index + 1)}</sup> Award for top poster entitled</p>) : (<p>{item.rank}<sup>{getRankSuffix(index + 1)}</sup> Award for top project entitled</p>)}
                           </div>
                           <div className="flex italic">
                             <p className=" w-full text-center">&quot;{item.project.project_topic}&quot;</p>
@@ -204,10 +216,10 @@ function Certificate({ dataY2, dataY1 }) {
                     </div>
                     <div className="text-center pb-12 mt-1">
                       <p className="font-[KhmerOSSiemreap] text-[11.54pt]">
-                        រាជធានីភ្នំពេញ ថ្ងៃទី២១ ខែវិច្ឆិកា ឆ្នាំ២០២៣
+                        រាជធានីភ្នំពេញ ថ្ងៃទី២១ ខែធ្នូ ឆ្នាំ២០២៣
                       </p>
                       <p className="font-['serif'] text-[13.02pt] mb-2">
-                        Phnom Penh, 21 November 2023
+                        Phnom Penh, 21 December 2023
                       </p>
                     </div>
                   </div>
