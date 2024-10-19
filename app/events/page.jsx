@@ -16,7 +16,7 @@ export default async function Page() {
       </section>
       <div className="card w-[90%] bg-base-100 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title">Engineering Day 2023</h2>
+          <h2 className="card-title">Engineering Day 2024</h2>
           <div className="flex flex-col items-center">
             {/* each event card */}
             <div className="stats stats-vertical bg-base-200 w-full lg:stats-horizontal shadow">

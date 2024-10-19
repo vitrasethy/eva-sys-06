@@ -11,6 +11,7 @@ export default async function action(prevState, formData) {
 
   const res = await fetch("https://admin.rupp.support/api/v1/auth/login", {
     method: "POST",
+    cache: "no-store",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
